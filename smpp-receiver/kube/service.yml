@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: proxkube
+  labels:
+    app: smpp-receiver-service
+  name: smpp-receiver-service
+spec:
+  ports:
+    - nodePort: 30001
+      port: 8056
+      protocol: TCP
+      targetPort: 8056
+  selector:
+    run: smpp-receiver
+  type: NodePort

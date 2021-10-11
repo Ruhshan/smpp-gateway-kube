@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smpp-receiver-dep
+  namespace: proxkube
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: smpp-receiver
+  template:
+    metadata:
+      labels:
+        run: smpp-receiver
+    spec:
+      containers:
+        - name: smpp-receiver-dep
+          image: sms-prox-kube_smpp-receiver:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8056
+              protocol: TCP

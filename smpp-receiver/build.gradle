@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.bkash'
+version '1.5-DEV'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.jsmpp', name: 'jsmpp', version: '2.2.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.rabbitmq:amqp-client:5.5.1'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile group: 'org.slf4j', name: 'slf4j-api'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'SmppReceiver.Receiver'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}

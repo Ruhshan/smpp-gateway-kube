@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-rest-dep
+  namespace: proxkube
+spec:
+  selector:
+    matchLabels:
+      run: demo-rest-example
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: demo-rest-example
+    spec:
+      containers:
+        - name: demo-rest
+          image: sms-prox-kube_demo-rest:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+

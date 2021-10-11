@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: proxkube
+  labels:
+    app: demo-rest-service
+  name: demo-rest-service
+spec:
+  ports:
+    - nodePort: 30002
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    run: demo-rest-example
+  type: NodePort

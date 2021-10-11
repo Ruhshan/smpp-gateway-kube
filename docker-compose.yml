@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  smpp-receiver:
+    build:
+      context: .
+      dockerfile: ./smpp-receiver/Dockerfile
+    ports:
+      - '8056:8056'
+  demo-rest:
+    build:
+      context: .
+      dockerfile: ./demo/Dockerfile
+    ports:
+      - '8888:8080'
