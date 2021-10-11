@@ -38,6 +38,7 @@ public class SessionHandler {
                 public void onStateChange(SessionState newState, SessionState oldState, Session source) {
 
                     if(newState.equals(SessionState.CLOSED)){
+                        LOGGER.warn(mb.build("SESSION.CLOSED","Process exiting"));
                         System.exit(0);
                     };
                 }

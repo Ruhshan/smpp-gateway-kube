@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: smpp-receiver-dep
-          image: sms-prox-kube_smpp-receiver:latest
+          image: smpp-receiver:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 8056
